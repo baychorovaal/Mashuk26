@@ -1194,8 +1194,6 @@
       }
   };
 })();
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    console.log("Вы используете мобильное устройство.");
     let nav = document.getElementById("navigation");
 
 nav.innerHTML = `
@@ -1308,16 +1306,4 @@ document.addEventListener('click', function(event) {
 });
   
 
-} else {
-    console.log("Вы используете ПК.");
-
-    let nav = document.getElementById("navigation");
-
-    nav.innerHTML = `<ul>
-                <li><a href="#top">Главная</a></li>
-                <li><a href="#attractions">Достопримечательности</a></li>
-                <li><a href="#cafe">Кафе и рестораны</a></li>
-                <li><a href="#route-planner">Маршрут</a></li>
-                <li><a href="#chatbot">Чат-бот</a></li>
-                <li><a href="#contacts">Контакты</a></li>`}
 </script></body></html>
