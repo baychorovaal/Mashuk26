@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пятигорск — Туристический портал</title>
 
-    <!-- Подключение шрифта Inter -->
-    <link href="./Пятигорск — Туристический портал_files/css2" rel="stylesheet">
-
-    <!-- Подключение Font Awesome для иконок -->
-    <link rel="stylesheet" href="./Пятигорск — Туристический портал_files/all.min.css" integrity="sha512-pIV2aEN3bE+ORCz4mKcPvsLrZNnYJ3lg8N6m3a+8PCl0qE+4Vx1s5L1Yd0XV13e5X5H6ePvgv5rRhr7eWxkg6Q==" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <!-- Подключение AOS (Animate On Scroll) для анимаций при прокрутке -->
-    <link href="./Пятигорск — Туристический портал_files/aos.css" rel="stylesheet">
 
     <style>
         /*
@@ -57,7 +49,7 @@
         }
 
         a:hover {
-            color: #6C63FF;
+            color: #0f3d37;
         }
 
         :root {
@@ -242,7 +234,7 @@
         }
 
         .hero__btn:hover {
-            background: #5848c2;
+            background: #146363;
             transform: translateY(-2px);
         }
 
@@ -266,7 +258,7 @@
 
         .attractions h2 {
             font-size: 2rem;
-            color: var(--dark-text);
+            color: var(--white);
             margin-bottom: 2rem;
             text-align: center;
         }
@@ -328,6 +320,38 @@
             line-height: 1.4;
         }
 
+
+.attraction-card-cafe {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .attraction-card-cafe img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .attraction-card-cafe h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .attraction-card-cafe p {
+            font-size: 1rem;
+            color: var(--medium-text);
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .attraction-card-cafe .info {
+            font-size: 0.9rem;
+            color: var(--medium-text);
+            line-height: 1.4;
+        }
         /* ---------------------------------------
            ОПТИМАЛЬНЫЙ МАРШРУТ
            --------------------------------------- */
@@ -347,7 +371,7 @@
         }
 
         .route-planner p {
-            color: var(--medium-text);
+            color: var(--dark-text);
             font-size: 1.1rem;
             margin-bottom: 2rem;
             line-height: 1.8;
@@ -409,13 +433,13 @@
 
         .chatbot h2 {
             font-size: 2rem;
-            color: var(--dark-text);
+            color: var(--white);
             margin-bottom: 1rem;
             text-align: center;
         }
 
         .chatbot p {
-            color: var(--medium-text);
+            color: var(--white);
             font-size: 1.1rem;
             margin-bottom: 2rem;
             line-height: 1.8;
@@ -490,14 +514,14 @@
 
         .contacts h2 {
             font-size: 2rem;
-            color: var(--dark-text);
+            color: var(--white);
             margin-bottom: 1rem;
         }
 
         .contact-info {
             margin-bottom: 2rem;
             font-size: 1rem;
-            color: var(--medium-text);
+            color: var(--white);
             line-height: 1.8;
         }
 
@@ -678,19 +702,16 @@
     -->
     <header class="fade-in">
         <div class="logo">Пятигорск Тур</div>
-        <nav>
-            <ul>
-                <li><a href="#top" class="active">Главная</a></li>
-                <li><a href="#attractions">Достопримечательности</a></li>
-                <li><a href="#kafeandrestaurant">Кафе и Рестораны</a></li>
-                <li><a href="#route-planner">Маршрут</a></li>
-                <li><a href="#chatbot">Чат-бот</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
+        <button class="menu-toggle" aria-label="Открыть меню">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <nav id="navigation">
+
         </nav>
     </header>
-
+    
     <!--
         ---------------------------------------
         HERO
@@ -705,8 +726,7 @@
             <h1>Пятигорск — жемчужина Кавказских Минеральных Вод</h1>
             <p>Откройте для себя уникальные термальные источники, величественные горные пейзажи и насыщенную культурно-историческую атмосферу города.</p>
             <p><strong>Планируйте свое путешествие и откройте новые грани Южной России</strong></p>
-            <a href="http://localhost:63342/random_number_bot/1.html?_ijt=c7ak02qdbet21amm113fo5k7t2&amp;_ij_reload=RELOAD_ON_SAVE#attractions" class="hero__btn hover-zoom">Исследовать <i class="fas fa-arrow-right"></i></a>
-           
+            <a href="#attractions" class="hero__btn hover-zoom">Исследовать <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
@@ -809,8 +829,8 @@
         <h2>Кафе и Рестораны</h2>
         <div class="attractions__filter aos-init" data-aos="fade-up" data-aos-delay="100">
             <!-- Комментарий: Здесь можно реализовать реальную фильтрацию через JS. -->
-            <select id="attraction-filter">
-                <option value="all">Все</option>
+            <select id="attraction-filter-cafe">
+                <option value="all_cafe">Все</option>
                 <option value="kafe">Кафе</option>
                 <option value="restaurant">Рестораны</option>
             </select>
@@ -819,41 +839,41 @@
         <div class="attractions__list aos-init" data-aos="fade-up" data-aos-delay="200" id="attraction-list">
             <!-- Пример карточек достопримечательностей -->
             <!-- Комментарий: Заменить ссылки на реальные фото достопримечательностей. -->
-            <div class="attraction-card card hover-zoom" data-type="kafe">
+            <div class="attraction-card-cafe card hover-zoom" data-type="kafe">
                 <img src="https://avatars.mds.yandex.net/i?id=50b237c95da22a3af6690e4611b74a8f8bfb1c86-5869591-images-thumbs&n=13" alt="Кухни Мира">
                 <h3>Кухни Мира</h3>
                 <p>Фуд-корт на территории Верхнего рынка. Здесь можно найти блюда разных кухонь мира.</p>
                 <p class="info">Часы работы: 09:00 - 21:00<br>Средний чек: ~500 руб.<br>Адрес: ул. Леваневского, 3, стр. 9.</p>
             </div>
-            <div class="attraction-card card hover-zoom" data-type="kafe">
+            <div class="attraction-card-cafe card hover-zoom" data-type="kafe">
                 <img src="https://avatars.mds.yandex.net/i?id=617c5b46136d6aac5a52f51fa58360f9a9c06b3e-9727996-images-thumbs&n=13" alt="1908">
                 <h3>1908</h3>
                 <p>Кофейня «1908» асположенf на первом этаже исторического здания бывшей гостиницы «Эрмитаж»</p>
                 <p class="info">Часы работы: 08:00 - 00:00<br>Средний чек: ~500 руб.<br>Адрес: ул. Октябрьская, 6.</p>
             </div>
-            <div class="attraction-card card hover-zoom" data-type="restaurant">
+            <div class="attraction-card-cafe card hover-zoom" data-type="restaurant">
                 <img src="https://avatars.mds.yandex.net/i?id=90895ec43354db4c792e971f99066eab9ed911d4-10870632-images-thumbs&n=13" alt="Tesla">
                 <h3>Tesla</h3>
                 <p>Место, где можно насладиться вкусной едой, авторскими коктейлями и уютной атмосферой.</p>
                 <p class="info">Часы работы:  09:00 - 01:00<br>Средний чек: ~2000<br>Адрес: ул. Козлова, 28.</p>
             </div>
-            <div class="attraction-card card hover-zoom" data-type="restaurant">
+            <div class="attraction-card-cafe card hover-zoom" data-type="restaurant">
                     <img src="https://avatars.mds.yandex.net/i?id=0771206e609fa6d5f119257798950fb0c37aea70-7753557-images-thumbs&n=13" alt="Цех этого города">
                 <h3>Цех этого города</h3>
                 <p>Концептуальный ресторан, в котором за вход платят, а все блюда и напитки продают по себестоимости.</p>
-                <p class="info">Часы работы: 11:00 - 01:00<br><br>ул. Козлова, 36Б.</p>
+                <p class="info">Часы работы: 11:00 - 01:00<br>ул. Козлова, 36Б.</p>
             </div>
-            <div class="attraction-card card hover-zoom" data-type="restaurant">
+            <div class="attraction-card-cafe card hover-zoom" data-type="restaurant">
                 <img src="https://avatars.mds.yandex.net/i?id=7ad82d426b9956f9258933c5d46958b3ecb3b4d1-4571855-images-thumbs&n=13" alt="Горы Горы">
             <h3>Горы Горы</h3>
             <p>Заведение находится в сердце курортной зоны города, который ведёт к знаменитому озеру Провал. Из ресторана открывается вид на Пятигорск и Кавказский хребет. </p>
-            <p class="info">Часы работы: 10:00 - 00:00<br>~2000<br>бульвар Гагарина, 4/1.</p>
+            <p class="info">Часы работы: 10:00 - 00:00<br>Средний чек: ~2000<br>бульвар Гагарина, 4/1.</p>
            </div>
-           <div class="attraction-card card hover-zoom" data-type="restaurant">
+           <div class="attraction-card-cafe card hover-zoom" data-type="kafe">
                <img src="https://avatars.mds.yandex.net/get-altay/235931/2a00000187c3a33f518aee66d0c92c9156f4/M_height" alt="Merci">
            <h3>Merci</h3>
            <p>Кофейня «Merci» уютное заведение с приятной атмосферой.</p>
-          <p class="info">Часы работы: 08:00 - 00:00<br>~1000<br>ул. Адмиральского, 8Б, этаж 1</p>
+          <p class="info">Часы работы: 08:00 - 00:00<br>Средний чек: ~1000<br>ул. Адмиральского, 8Б, этаж 1</p>
          </div>
 
         </div>
@@ -922,10 +942,10 @@
     <section class="contacts fade-in aos-init" id="contacts" data-aos="fade-up">
         <h2>Контакты</h2>
         <div class="contact-info">
-            <p>Адрес: г. Пятигорск, ул. Примерная, д. 1</p>
-            <p>E-mail: <a href="mailto:info@visit-pyatigorsk.ru">info@visit-pyatigorsk.ru</a></p>
-            <p>Телефон: <a href="tel:+71234567890">+7 (123) 456-78-90</a></p>
-            <p>Социальные сети: <a href="http://localhost:63342/random_number_bot/1.html?_ijt=c7ak02qdbet21amm113fo5k7t2&amp;_ij_reload=RELOAD_ON_SAVE#">VK</a>, <a href="http://localhost:63342/random_number_bot/1.html?_ijt=c7ak02qdbet21amm113fo5k7t2&amp;_ij_reload=RELOAD_ON_SAVE#">Instagram</a></p>
+            <p>Адрес: г. Пятигорск, ул. Карла Маркса, д. 22</p>
+            <p>E-mail: <a href="mailto:baychorovaal@gmail.com">baychorovaal@gmail.com</a></p>
+            <p>Телефон: <a href="tel:+79276493754">+7 (927) 649-37-54</a></p>
+            <p>Социальные сети: <a href="https://vk.com/id812975199">VK</a>, <a href="https://t.me/baychorovaal">Telegram</a></p>
         </div>
         <form class="contact-form card aos-init" data-aos="fade-up" data-aos-delay="100">
             <input type="text" placeholder="Ваш телефон или e-mail" required="">
@@ -972,18 +992,14 @@
     </footer>
 
     <!-- Подключение библиотек JS -->
-    <script src="./Пятигорск — Туристический портал_files/three.min.js.загрузка"></script>
-    <script src="./Пятигорск — Туристический портал_files/OrbitControls.min.js.загрузка"></script>
-    <script src="./Пятигорск — Туристический портал_files/aos.js.загрузка"></script>
-
     <script>
-        // -----------------------------------
-        // Инициализация AOS анимаций
-        // -----------------------------------
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
+        // // -----------------------------------
+        // // Инициализация AOS анимаций
+        // // -----------------------------------
+        // AOS.init({
+        //     duration: 1000,
+        //     once: true,
+        // });
 
         // -----------------------------------
         // FAQ раскрытие
@@ -999,12 +1015,26 @@
         // Фильтрация достопримечательностей
         // -----------------------------------
         const filterSelect = document.getElementById('attraction-filter');
+        const filterSelect_cafe = document.getElementById('attraction-filter-cafe');
         const attractionCards = document.querySelectorAll('.attraction-card');
+        const attractionCards_cafe = document.querySelectorAll('.attraction-card-cafe');
 
         filterSelect.addEventListener('change', () => {
             const value = filterSelect.value;
             attractionCards.forEach(card => {
                 if (value === 'all' || card.dataset.type === value) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+
+        filterSelect_cafe.addEventListener('change', () => {
+            const value = filterSelect_cafe.value;
+            attractionCards_cafe.forEach(card => {
+                if (value === 'all_cafe' || card.dataset.type === value) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
@@ -1082,49 +1112,49 @@
         // -----------------------------------
         // 3D-анимация в HERO (демо)
         // -----------------------------------
-        const canvas = document.getElementById('hero-3d-canvas');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-        camera.position.set(0, 1.5, 3);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
+        // const canvas = document.getElementById('hero-3d-canvas');
+        // const scene = new THREE.Scene();
+        // const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        // camera.position.set(0, 1.5, 3);
+        // const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        // renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        // renderer.setPixelRatio(window.devicePixelRatio);
 
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.enablePan = false;
-        controls.minDistance = 2;
-        controls.maxDistance = 5;
+        // const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        // controls.enableDamping = true;
+        // controls.enablePan = false;
+        // controls.minDistance = 2;
+        // controls.maxDistance = 5;
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-        scene.add(ambientLight);
+        // const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        // scene.add(ambientLight);
 
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
-        directionalLight.position.set(5, 10, 7.5);
-        scene.add(directionalLight);
+        // const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        // directionalLight.position.set(5, 10, 7.5);
+        // scene.add(directionalLight);
 
-        // Пример 3D-объекта (можно заменить моделью горы или символом города)
-        const geometry = new THREE.TorusKnotGeometry(0.6, 0.2, 100, 16);
-        const material = new THREE.MeshStandardMaterial({ color: 0x6C63FF, metalness: 0.6, roughness: 0.4 });
-        const torusKnot = new THREE.Mesh(geometry, material);
-        scene.add(torusKnot);
+        // // Пример 3D-объекта (можно заменить моделью горы или символом города)
+        // const geometry = new THREE.TorusKnotGeometry(0.6, 0.2, 100, 16);
+        // const material = new THREE.MeshStandardMaterial({ color: 0x6C63FF, metalness: 0.6, roughness: 0.4 });
+        // const torusKnot = new THREE.Mesh(geometry, material);
+        // scene.add(torusKnot);
 
-        function animate() {
-            requestAnimationFrame(animate);
-            torusKnot.rotation.x += 0.005;
-            torusKnot.rotation.y += 0.005;
-            controls.update();
-            renderer.render(scene, camera);
-        }
-        animate();
+        // function animate() {
+        //     requestAnimationFrame(animate);
+        //     torusKnot.rotation.x += 0.005;
+        //     torusKnot.rotation.y += 0.005;
+        //     controls.update();
+        //     renderer.render(scene, camera);
+        // }
+        // animate();
 
-        window.addEventListener('resize', () => {
-            const width = canvas.clientWidth;
-            const height = canvas.clientHeight;
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-            renderer.setSize(width, height);
-        });
+        // window.addEventListener('resize', () => {
+        //     const width = canvas.clientWidth;
+        //     const height = canvas.clientHeight;
+        //     camera.aspect = width / height;
+        //     camera.updateProjectionMatrix();
+        //     renderer.setSize(width, height);
+        // });
     </script>
 
 
@@ -1164,4 +1194,130 @@
       }
   };
 })();
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    console.log("Вы используете мобильное устройство.");
+    let nav = document.getElementById("navigation");
+
+nav.innerHTML = `
+<style>
+.burger-menu {
+    position: relative;
+}
+
+.burger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 30px;
+    height: 21px;
+    justify-content: space-between;
+    transition: transform 0.3s ease; /* Плавный переход для бургер-меню */
+}
+
+.line {
+    height: 3px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    height: 0; /* Начальная высота */
+    overflow: hidden; /* Скрываем переполнение */
+    position: absolute;
+    top: 60px;
+    right: 0; /* Выравнивание меню вправо */
+    background-color: #fff;
+    padding: 0 10px; /* Убираем внутренние отступы */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Обеспечивает видимость над другими элементами */
+    transition: height 0.3s ease; /* Плавный переход для высоты */
+}
+
+.nav-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Убираем отступы для списка */
+}
+
+.nav-links li {
+    margin: 10px 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+.show {
+    height: auto; /* Автоматическая высота при показе */
+    padding: 10px; /* Добавляем отступы при открытом меню */
+}
+</style>
+
+<div class="burger-menu">
+    <div class="burger" id="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-links" id="nav-links">
+        <ul>
+            <li><a href="top">Главная</a></li>
+            <li><a href="#attraction">Достопримечательности</a></li>
+            <li><a href="#cafe">Кафе и Рестораны</a></li>
+            <li><a href="#route-planner">Маршрут</a></li>
+            <li><a href="#chatbot">Чат-Бот</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+</div>
+`;
+
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('nav-links');
+
+burger.onclick = function(event) {
+    event.stopPropagation(); // Останавливаем событие, чтобы клик по бургеру не закрывал меню
+    const isShown = navLinks.classList.toggle('show'); // Переключаем класс для отображения меню
+    
+    // Меняем бургер-иконку на крестик (для улучшения UX)
+    const lines = document.querySelectorAll('.line');
+    if (isShown) {
+        lines[0].style.transform = "rotate(45deg) translateY(10px)";
+        lines[1].style.opacity = "0"; // Скрываем среднюю линию
+        lines[2].style.transform = "rotate(-45deg) translateY(-10px)";
+    } else {
+        lines[0].style.transform = "rotate(0) translateY(0)";
+        lines[1].style.opacity = "1"; // Показываем среднюю линию
+        lines[2].style.transform = "rotate(0) translateY(0)";
+    }
+};
+
+// Закрываем меню при клике вне бургер-меню
+document.addEventListener('click', function(event) {
+    if (navLinks.classList.contains('show')) {
+        navLinks.classList.remove('show'); // Убираем класс показа меню
+        const lines = document.querySelectorAll('.line');
+        // Возвращаем бургер-иконку в исходное состояние
+        lines[0].style.transform = "rotate(0) translateY(0)";
+        lines[1].style.opacity = "1"; // Показываем среднюю линию
+        lines[2].style.transform = "rotate(0) translateY(0)";
+    }
+});
+  
+
+} else {
+    console.log("Вы используете ПК.");
+
+    let nav = document.getElementById("navigation");
+
+    nav.innerHTML = `<ul>
+                <li><a href="#top">Главная</a></li>
+                <li><a href="#attractions">Достопримечательности</a></li>
+                <li><a href="#cafe">Кафе и рестораны</a></li>
+                <li><a href="#route-planner">Маршрут</a></li>
+                <li><a href="#chatbot">Чат-бот</a></li>
+                <li><a href="#contacts">Контакты</a></li>`}
 </script></body></html>
